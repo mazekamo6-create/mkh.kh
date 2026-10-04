@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="design">Mohamed Khaled — Graphic Designer & Creative Professional</title>
+<meta name="description" content="Mohamed Khaled is a graphic designer and creative professional working across branding, advertising, and digital design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+
+    /* ============ LANGUAGE SWITCH ============ */
+    .lang-switch{
+      display:flex; align-items:center; gap:4px;
+      border:1.5px solid var(--line); border-radius:20px;
+      padding:3px; margin-left:8px;
+      background:var(--paper);
+    }
+    .lang-btn{
+      border:0; background:transparent; color:var(--ink-soft);
+      padding:6px 10px; border-radius:15px; font-size:.78rem;
+      font-weight:600; cursor:pointer;
+    }
+    .lang-btn.active{background:var(--ink); color:var(--paper);}
+    .lang-btn:hover{color:var(--ink);}
+    [dir="rtl"] body{font-family:'Cairo','Inter',sans-serif;}
+    [dir="rtl"] h1,[dir="rtl"] h2,[dir="rtl"] h3,[dir="rtl"] .display,
+    [dir="rtl"] .brand,[dir="rtl"] .sec-num{font-family:'Cairo','Space Grotesk',sans-serif;}
+    [dir="rtl"] nav.links{direction:rtl;}
+    [dir="rtl"] .navbar{direction:rtl;}
+    [dir="rtl"] .mobile-panel{direction:rtl;}
+    [dir="rtl"] .hero-grid,[dir="rtl"] .about-grid,[dir="rtl"] .contact-grid{direction:rtl;}
+    [dir="rtl"] .swatch-top{direction:rtl;}
+    [dir="rtl"] .service-row{direction:rtl;}
+    [dir="rtl"] .service-desc,[dir="rtl"] .about-grid p,[dir="rtl"] .sec-desc,
+    [dir="rtl"] .hero p.intro,[dir="rtl"] .field input,[dir="rtl"] .field textarea{text-align:right;}
+    [dir="rtl"] .cta-row,[dir="rtl"] .filters{direction:rtl;}
+    [dir="rtl"] .contact-list li{direction:rtl;}
+    [dir="rtl"] .contact-list a.value{direction:ltr;}
+    [dir="rtl"] .social-row{direction:ltr;}
+    [dir="rtl"] .foot-top,[dir="rtl"] .foot-bottom{direction:rtl;}
+    @media (max-width:860px){
+      .lang-switch{margin-left:0; margin-right:8px;}
+    }
+
+  /* ============ TOKENS ============ */
+  :root{
+    --paper:#EFEDE6;
+    --paper-2:#E4E1D6;
+    --ink:#16161B;
+    --ink-soft:#57565E;
+    --line: rgba(22,22,27,0.14);
+    --red:#FF4433;
+    --red-ink:#B8291B;
+    --teal:#1E7F86;
+    --yellow:#E7AE2F;
+    --card-shadow: 0 1px 2px rgba(22,22,27,0.06);
+    --radius-s: 3px;
+    --radius-m: 6px;
+    --focus: 2px solid var(--red);
+  }
+  :root:not([data-theme="light"]){
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#17171B;
+      --paper-2:#1F1F24;
+      --ink:#F2F1EC;
+      --ink-soft:#B4B2AA;
+      --line: rgba(242,241,236,0.14);
+      --red:#FF5B49;
+      --red-ink:#FF8A7C;
+      --teal:#4FB6BD;
+      --yellow:#F0C158;
+      --card-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#17171B;
+    --paper-2:#1F1F24;
+    --ink:#F2F1EC;
+    --ink-soft:#B4B2AA;
+    --line: rgba(242,241,236,0.14);
+    --red:#FF5B49;
+    --red-ink:#FF8A7C;
+    --teal:#4FB6BD;
+    --yellow:#F0C158;
+    --card-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    letter-spacing:-0.02em;
+    line-height:1.02;
+    margin:0;
+  }
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit; cursor:pointer;}
+  img{max-width:100%; display:block;}
+  :focus-visible{outline:var(--focus); outline-offset:3px;}
+
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+
+  .plus{position:relative; display:inline-block; width:14px; height:14px;}
+  .plus::before, .plus::after{content:""; position:absolute; background:currentColor;}
+  .plus::before{ top:50%; left:0; width:100%; height:1.5px; transform:translateY(-50%); }
+  .plus::after{ left:50%; top:0; height:100%; width:1.5px; transform:translateX(-50%); }
+
+  /* ============ NAV ============ */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .navbar{
+    display:flex; align-items:center; justify-content:space-between;
+    height:76px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Space Grotesk'; font-weight:700; font-size:1.05rem;
+  }
+  .brand-mark{
+    width:34px; height:34px; border:1.5px solid var(--ink); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.72rem; letter-spacing:0.02em;
+  }
+  nav.links{display:flex; gap:2px; align-items:center;}
+  nav.links a{
+    padding:10px 16px; font-size:0.94rem; color:var(--ink-soft);
+    border-radius:20px; transition:color .2s ease, background .2s ease;
+  }
+  nav.links a:hover{ color:var(--ink); background:var(--paper-2); }
+  .nav-cta{
+    border:1.5px solid var(--ink); padding:9px 18px !important; border-radius:20px;
+    color:var(--ink) !important;
+  }
+  .nav-cta:hover{ background:var(--ink) !important; color:var(--paper) !important; }
+  .burger{
+    display:none; width:40px; height:40px; border:none; background:none;
+    flex-direction:column; justify-content:center; align-items:center; gap:5px;
+  }
+  .burger span{width:22px; height:1.5px; background:var(--ink); display:block; transition:.25s;}
+  .mobile-panel{
+    display:none; position:fixed; inset:76px 0 0 0; background:var(--paper); z-index:99;
+    padding:20px 20px 40px; overflow-y:auto;
+  }
+  .mobile-panel.open{display:block;}
+  .mobile-panel a{
+    display:block; padding:16px 4px; font-family:'Space Grotesk'; font-size:1.4rem; font-weight:600;
+    border-bottom:1px solid var(--line);
+  }
+  @media (max-width:860px){
+    nav.links{display:none;}
+    .burger{display:flex;}
+  }
+
+  /* ============ HERO ============ */
+  .hero{
+    padding:74px 0 96px;
+    position:relative;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.2fr 0.8fr; gap:56px; align-items:center;
+  }
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr; gap:48px;}
+    .hero{padding:44px 0 64px;}
+  }
+  .kicker{
+    display:flex; align-items:center; gap:8px; color:var(--ink-soft);
+    font-size:0.9rem; margin-bottom:20px;
+  }
+  .kicker .plus{color:var(--red);}
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 4.6rem);
+    opacity:0; transform:translateY(16px);
+    animation:riseIn .7s cubic-bezier(.2,.8,.2,1) forwards;
+    animation-delay:.05s;
+  }
+  .hero h1 .role{
+    display:block; font-size:0.34em; font-weight:500; color:var(--ink-soft);
+    margin-top:14px; letter-spacing:0;
+  }
+  .hero p.intro{
+    max-width:46ch; font-size:1.08rem; color:var(--ink-soft); line-height:1.65;
+    margin:26px 0 34px;
+    opacity:0; transform:translateY(16px);
+    animation:riseIn .7s cubic-bezier(.2,.8,.2,1) forwards; animation-delay:.18s;
+  }
+  .cta-row{
+    display:flex; gap:14px; flex-wrap:wrap; margin-bottom:36px;
+    opacity:0; transform:translateY(16px);
+    animation:riseIn .7s cubic-bezier(.2,.8,.2,1) forwards; animation-delay:.3s;
+  }
+  .btn{
+    padding:14px 26px; border-radius:28px; font-weight:600; font-size:0.98rem;
+    display:inline-flex; align-items:center; gap:8px; transition:transform .2s ease, background .2s ease, color .2s ease;
+    border:1.5px solid transparent;
+  }
+  .btn-primary{ background:var(--ink); color:var(--paper); }
+  .btn-primary:hover{ background:var(--red-ink); transform:translateY(-2px); }
+  .btn-outline{ border-color:var(--ink); color:var(--ink); }
+  .btn-outline:hover{ background:var(--ink); color:var(--paper); transform:translateY(-2px); }
+
+  .social-row{
+    display:flex; gap:14px;
+    opacity:0; transform:translateY(16px);
+    animation:riseIn .7s cubic-bezier(.2,.8,.2,1) forwards; animation-delay:.4s;
+  }
+  .social-row a{
+    width:38px; height:38px; border:1.5px solid var(--line); border-radius:50%;
+    display:flex; align-items:center; justify-content:center; color:var(--ink-soft);
+    transition:.2s;
+  }
+  .social-row a:hover{ border-color:var(--ink); color:var(--ink); transform:translateY(-2px); }
+  .social-row svg{width:16px; height:16px;}
+
+  @keyframes riseIn{ to{opacity:1; transform:translateY(0);} }
+
+  /* Portrait */
+  .portrait-wrap{
+    position:relative; width:min(360px, 82vw); margin:0 auto;
+    opacity:0; animation:riseIn .8s cubic-bezier(.2,.8,.2,1) forwards; animation-delay:.15s;
+  }
+  .portrait-ring{
+    position:absolute; inset:-22px; border-radius:50%;
+    border:1.5px dashed var(--ink-soft); opacity:.55;
+    animation:spin 28s linear infinite;
+  }
+  .portrait-ring.r2{ inset:-42px; border-color:var(--red); opacity:.35; animation-duration:40s; animation-direction:reverse; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .portrait{
+    position:relative; aspect-ratio:1/1; border-radius:50%; overflow:hidden;
+    background:linear-gradient(155deg, var(--ink) 0%, #34333a 60%, var(--red-ink) 130%);
+    box-shadow:0 24px 60px -20px rgba(22,22,27,0.35);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .portrait span{
+    font-family:'Space Grotesk'; font-weight:700; color:var(--paper);
+    font-size:clamp(3.4rem, 9vw, 5rem); letter-spacing:-0.03em;
+  }
+  .reg-tag{
+    position:absolute; background:var(--paper); border:1px solid var(--line);
+    border-radius:20px; padding:7px 13px; font-size:0.78rem; color:var(--ink-soft);
+    box-shadow:var(--card-shadow); display:flex; align-items:center; gap:6px;
+  }
+  .reg-tag i{width:7px; height:7px; border-radius:50%; display:inline-block;}
+  .reg-tag.t1{ top:6%; right:-6%; }
+  .reg-tag.t1 i{background:var(--red);}
+  .reg-tag.t2{ bottom:10%; left:-10%; }
+  .reg-tag.t2 i{background:var(--teal);}
+  @media (max-width:900px){ .reg-tag{display:none;} }
+
+  /* ============ SECTION SHELL ============ */
+  section{ padding:96px 0; border-top:1px solid var(--line); }
+  @media (max-width:640px){ section{padding:64px 0;} }
+  .sec-head{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:24px;
+    margin-bottom:52px; flex-wrap:wrap;
+  }
+  .sec-num{ font-family:'Space Grotesk'; color:var(--ink-soft); font-size:0.95rem; }
+  .sec-head h2{ font-size:clamp(1.9rem, 3.6vw, 2.6rem); max-width:16ch; }
+  .sec-desc{ max-width:34ch; color:var(--ink-soft); font-size:1rem; line-height:1.6; }
+
+  /* ============ ABOUT ============ */
+  .about-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; }
+  @media (max-width:860px){ .about-grid{grid-template-columns:1fr; gap:36px;} }
+  .about-grid p{ color:var(--ink-soft); line-height:1.75; font-size:1.04rem; margin:0 0 20px; max-width:56ch; }
+  .stat-list{ display:grid; grid-template-columns:1fr 1fr; gap:0; border-top:1px solid var(--line); }
+  .stat{ padding:22px 0; border-bottom:1px solid var(--line); }
+  .stat:nth-child(odd){ padding-right:20px; border-right:1px solid var(--line); }
+  .stat b{ display:block; font-family:'Space Grotesk'; font-size:1.9rem; color:var(--red-ink); }
+  .stat span{ color:var(--ink-soft); font-size:0.92rem; }
+
+  /* ============ SKILLS — swatch bars ============ */
+  .swatch-cols{ display:grid; grid-template-columns:1fr 1fr; gap:60px; }
+  @media (max-width:760px){ .swatch-cols{grid-template-columns:1fr; gap:36px;} }
+  .swatch-group h3{ font-size:1.1rem; margin-bottom:22px; color:var(--ink-soft); font-weight:600; font-family:'Inter'; }
+  .swatch{ margin-bottom:18px; }
+  .swatch-top{ display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.95rem; }
+  .swatch-track{ height:8px; border-radius:5px; background:var(--paper-2); overflow:hidden; }
+  .swatch-fill{ height:100%; border-radius:5px; width:0; transition:width 1.1s cubic-bezier(.2,.8,.2,1); }
+
+  /* ============ SERVICES ============ */
+  .service-list{ border-top:1px solid var(--line); }
+  .service-row{
+    display:grid; grid-template-columns:80px 1fr 1.3fr; gap:28px; align-items:start;
+    padding:30px 0; border-bottom:1px solid var(--line);
+    transition:background .2s ease;
+  }
+  .service-row:hover{ background:var(--paper-2); }
+  @media (max-width:760px){ .service-row{grid-template-columns:48px 1fr; }
+    .service-row .service-desc{ grid-column:2/3; } }
+  .service-icon{ width:44px; height:44px; color:var(--red-ink); }
+  .service-row h3{ font-size:1.28rem; font-weight:600; font-family:'Space Grotesk'; }
+  .service-desc{ color:var(--ink-soft); line-height:1.6; max-width:52ch; }
+
+  /* ============ PROJECTS ============ */
+  .filters{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:36px; }
+  .filter-btn{
+    padding:9px 18px; border-radius:20px; border:1.5px solid var(--line); background:none;
+    color:var(--ink-soft); font-size:0.92rem; transition:.2s;
+  }
+  .filter-btn.active, .filter-btn:hover{ border-color:var(--ink); color:var(--ink); }
+  .proj-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:26px; }
+  @media (max-width:760px){ .proj-grid{grid-template-columns:1fr;} }
+  .proj-card{
+    position:relative; border-radius:var(--radius-m); overflow:hidden; aspect-ratio:4/3;
+    cursor:pointer;
+  }
+  .proj-thumb{
+    position:absolute; inset:0; display:flex; align-items:flex-end; padding:22px;
+    transition:transform .5s cubic-bezier(.2,.8,.2,1);
+  }
+  .proj-card:hover .proj-thumb{ transform:scale(1.05); }
+  .proj-tag{
+    align-self:flex-start; margin-top:auto; background:rgba(255,255,255,0.92); color:#16161B;
+    font-size:0.78rem; padding:5px 11px; border-radius:14px; font-weight:600;
+  }
+  .proj-overlay{
+    position:absolute; inset:0; background:linear-gradient(0deg, rgba(10,10,12,0.86) 0%, rgba(10,10,12,0) 55%);
+    display:flex; flex-direction:column; justify-content:flex-end; padding:22px;
+    opacity:0; transition:opacity .3s ease;
+  }
+  .proj-card:hover .proj-overlay{ opacity:1; }
+  .proj-overlay h3{ color:#fff; font-size:1.2rem; margin-bottom:4px; }
+  .proj-overlay p{ color:rgba(255,255,255,0.75); font-size:0.9rem; margin:0 0 12px; }
+  .proj-overlay .btn{ align-self:flex-start; padding:9px 16px; font-size:0.85rem; }
+
+  /* ============ CONTACT ============ */
+  .contact-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px; }
+  @media (max-width:860px){ .contact-grid{grid-template-columns:1fr; gap:40px;} }
+  .contact-list{ list-style:none; margin:28px 0 0; padding:0; }
+  .contact-list li{ padding:16px 0; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; }
+  .contact-list li:last-child{ border-bottom:1px solid var(--line); }
+  .contact-list span.label{ color:var(--ink-soft); font-size:0.92rem; }
+  .contact-list a.value{ font-family:'Space Grotesk'; font-weight:600; }
+  .field{ margin-bottom:18px; }
+  .field label{ display:block; font-size:0.88rem; color:var(--ink-soft); margin-bottom:7px; }
+  .field input, .field textarea{
+    width:100%; border:1.5px solid var(--line); background:var(--paper-2); border-radius:8px;
+    padding:13px 14px; font-family:inherit; font-size:0.98rem; color:var(--ink); resize:vertical;
+  }
+  .field input:focus, .field textarea:focus{ border-color:var(--ink); outline:none; }
+  .form-msg{ margin-top:14px; font-size:0.92rem; color:var(--teal); display:none; }
+  .form-msg.show{ display:block; }
+
+  /* ============ FOOTER ============ */
+  footer{ border-top:1px solid var(--line); padding:52px 0 34px; }
+  .foot-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:24px; flex-wrap:wrap; margin-bottom:34px; }
+  .foot-top h3{ font-size:1.5rem; }
+  .foot-top p{ color:var(--ink-soft); margin:6px 0 0; }
+  .foot-bottom{ display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
+    border-top:1px solid var(--line); padding-top:22px; color:var(--ink-soft); font-size:0.86rem; }
+/* ============ OPENING INTRO (mk-intro) ============ */
+.mk-intro{
+  --mk-mark:clamp(76px,22vw,96px);
+  --mk-ring:calc(var(--mk-mark) * 1.62);
+  display:none; position:fixed; inset:0; z-index:9999; overflow:hidden;
+  place-items:center; background:var(--paper); color:var(--ink);
+  transition:opacity .7s cubic-bezier(.4,0,.2,1);
+}
+html.mk-opening-active{overflow:hidden; scrollbar-gutter:stable;}
+html.mk-opening-active .mk-intro{display:grid; animation:mkIntroFailsafe .01s linear 4.6s forwards;}
+.mk-intro--out{opacity:0; pointer-events:none;}
+@keyframes mkIntroFailsafe{to{opacity:0; visibility:hidden; pointer-events:none;}}
+
+.mk-intro__stage{position:relative; width:var(--mk-ring); height:var(--mk-ring); transition:transform .7s cubic-bezier(.4,0,.2,1);}
+.mk-intro--out .mk-intro__stage{transform:translateY(-14px) scale(1.04);}
+
+/* circular line around the mark */
+.mk-intro__ring{position:absolute; inset:0; width:100%; height:100%; opacity:0; animation:mkRingIn .9s cubic-bezier(.2,.8,.2,1) .15s forwards;}
+.mk-intro__ring circle{fill:none;}
+.mk-intro__ring .base{stroke:var(--ink); stroke-opacity:.18; stroke-width:.8; stroke-dasharray:100; stroke-dashoffset:100; animation:mkDraw 1.1s cubic-bezier(.65,0,.25,1) .25s forwards;}
+.mk-intro__ring .arc{stroke:var(--red); stroke-width:1.4; stroke-linecap:round; stroke-dasharray:14 86; transform-origin:60px 60px; transform:rotate(-90deg); opacity:0; animation:mkArc 1.5s cubic-bezier(.45,.05,.2,1) .3s forwards;}
+@keyframes mkRingIn{from{opacity:0; transform:scale(.82);} to{opacity:1; transform:scale(1);}}
+@keyframes mkDraw{to{stroke-dashoffset:0;}}
+@keyframes mkArc{0%{opacity:0; transform:rotate(-90deg);} 20%{opacity:1;} 100%{opacity:1; transform:rotate(270deg);}}
+
+/* the existing .brand-mark, enlarged only inside the intro */
+.brand-mark.mk-intro__mark{
+  position:absolute; inset:0; margin:auto;
+  width:var(--mk-mark); height:var(--mk-mark);
+  font-family:'Space Grotesk',sans-serif; font-weight:700;
+  font-size:calc(var(--mk-mark) * .34); letter-spacing:.03em;
+  background:var(--paper); opacity:0; transform:scale(.8);
+  animation:mkMarkIn .8s cubic-bezier(.2,.8,.2,1) .05s forwards;
+}
+@keyframes mkMarkIn{to{opacity:1; transform:scale(1);}}
+
+/* name + role hang below the ring, so the mark stays dead-centre */
+.mk-intro__text{position:absolute; top:calc(100% + 22px); left:50%; transform:translateX(-50%); width:max-content; max-width:88vw; text-align:center;}
+.mk-intro__name{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(1.5rem,5.4vw,2.1rem); letter-spacing:-.02em; line-height:1.05; opacity:0; transform:translateY(12px); animation:mkTextIn .7s cubic-bezier(.2,.8,.2,1) 1s forwards;}
+.mk-intro__role{margin-top:12px; font-size:clamp(.8rem,2.7vw,.95rem); color:var(--ink-soft); letter-spacing:.02em; opacity:0; transform:translateY(10px); animation:mkTextIn .7s cubic-bezier(.2,.8,.2,1) 1.3s forwards;}
+[dir="rtl"] .mk-intro__role{letter-spacing:0;}
+@keyframes mkTextIn{to{opacity:1; transform:translateY(0);}}
+@media (max-height:420px){ .mk-intro{--mk-mark:64px;} .mk-intro__text{top:calc(100% + 10px);} }
+
+/* hold the Hero's existing animations until the intro hands off */
+html.mk-opening-active:not(.mk-intro-release) :is(.hero h1,.hero p.intro,.cta-row,.social-row,.portrait-wrap){animation-play-state:paused;}
+
+@media (prefers-reduced-motion: reduce){ .mk-intro{display:none !important;} }
+</style>
+</head>
+<body>
+
+<!-- Premium cinematic page-opening animation -->
+<style id="mk-opening-animation">
+  .mk-opening{
+    position:fixed; inset:0; z-index:99999;
+    display:grid; place-items:center;
+    background:
+      radial-gradient(circle at 50% 46%, rgba(255,255,255,.045), transparent 34%),
+      var(--paper,#f7f3ed);
+    color:var(--ink,#171717);
+    overflow:hidden;
+    opacity:1; visibility:visible;
+    transition:opacity 1s cubic-bezier(.16,1,.3,1),visibility 1s;
+  }
+  .mk-opening.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
+  html.mk-opening-active{overflow:hidden}
+
+  .mk-opening::before{
+    content:""; position:absolute; inset:-20%;
+    background:conic-gradient(from 0deg,transparent 0 72%,rgba(216,58,58,.055) 77%,transparent 82% 100%);
+    animation:mkOrbit 5s linear infinite;
+  }
+  .mk-opening::after{
+    content:""; position:absolute; width:42vw; height:42vw; min-width:280px; min-height:280px;
+    border:1px solid currentColor; border-radius:50%; opacity:.035;
+    animation:mkBreath 2.8s ease-in-out infinite;
+  }
+
+  .mk-opening__inner{
+    position:relative; z-index:2;
+    width:min(430px,88vw); text-align:center;
+  }
+
+  .mk-opening__eyebrow{
+    margin-bottom:24px;
+    font:600 .68rem/1 'Space Grotesk',sans-serif;
+    letter-spacing:.28em; text-transform:uppercase;
+    opacity:0; transform:translateY(8px);
+    animation:mkReveal .7s cubic-bezier(.2,.8,.2,1) .05s forwards;
+  }
+  .mk-opening__eyebrow::before,
+  .mk-opening__eyebrow::after{
+    content:""; display:inline-block; vertical-align:middle;
+    width:28px; height:1px; margin:0 10px;
+    background:currentColor; opacity:.25;
+  }
+
+  .mk-opening__ring{
+    position:relative; width:190px; height:190px;
+    margin:0 auto 32px;
+    opacity:0; transform:scale(.82);
+    animation:mkLogoIn 1.05s cubic-bezier(.16,1,.3,1) .12s forwards;
+  }
+  .mk-opening__ring svg{
+    position:absolute; inset:0; width:100%; height:100%;
+    overflow:visible;
+  }
+  .mk-opening__circle{
+    fill:none; stroke:currentColor; stroke-width:.7; opacity:.13;
+  }
+  .mk-opening__circle2{
+    fill:none; stroke:currentColor; stroke-width:.5; opacity:.07;
+    stroke-dasharray:2 7;
+    animation:mkRotate 12s linear infinite;
+    transform-origin:50% 50%;
+  }
+  .mk-opening__arc{
+    fill:none; stroke:var(--red,#d83a3a);
+    stroke-width:1.8; stroke-linecap:round;
+    stroke-dasharray:115 885;
+    animation:mkSpin 2.1s cubic-bezier(.55,.05,.2,1) infinite;
+  }
+
+  .mk-opening__mark{
+    position:absolute; inset:0; margin:auto;
+    width:112px; height:112px;
+    display:grid; place-items:center;
+    border:1px solid currentColor; border-radius:50%;
+    background:var(--paper,#f7f3ed);
+    box-shadow:0 0 0 1px rgba(255,255,255,.04),0 18px 60px rgba(0,0,0,.08);
+    font:700 36px/1 'Space Grotesk',sans-serif;
+    letter-spacing:.025em;
+  }
+  .mk-opening__mark::after{
+    content:""; position:absolute; inset:8px;
+    border:1px solid currentColor; border-radius:50%; opacity:.08;
+  }
+
+  .mk-opening__name{
+    font:700 clamp(2rem,7vw,3.15rem)/1 'Space Grotesk',sans-serif;
+    letter-spacing:-.045em;
+    opacity:0; transform:translateY(18px);
+    animation:mkReveal .85s cubic-bezier(.16,1,.3,1) .65s forwards;
+  }
+  .mk-opening__role{
+    margin-top:12px;
+    font:500 .72rem/1.5 'Space Grotesk',sans-serif;
+    letter-spacing:.18em; text-transform:uppercase;
+    color:var(--ink-soft,#666);
+    opacity:0; transform:translateY(12px);
+    animation:mkReveal .8s cubic-bezier(.16,1,.3,1) .82s forwards;
+  }
+  .mk-opening__progress{
+    width:100px; height:1px; margin:28px auto 0;
+    background:currentColor; opacity:.1; overflow:hidden;
+  }
+  .mk-opening__progress span{
+    display:block; width:0; height:100%;
+    background:var(--red,#d83a3a);
+    animation:mkProgress 2.35s cubic-bezier(.4,0,.2,1) .15s forwards;
+  }
+  .mk-opening__corner{
+    position:absolute; z-index:3; font:600 .58rem/1 'Space Grotesk',sans-serif;
+    letter-spacing:.16em; opacity:.28;
+  }
+  .mk-opening__corner.tl{top:28px;left:32px}
+  .mk-opening__corner.br{bottom:28px;right:32px}
+
+  @keyframes mkLogoIn{to{opacity:1;transform:scale(1)}}
+  @keyframes mkReveal{to{opacity:1;transform:translateY(0)}}
+  @keyframes mkProgress{to{width:100%}}
+  @keyframes mkSpin{
+    from{stroke-dashoffset:0;transform:rotate(0deg)}
+    to{stroke-dashoffset:-1000;transform:rotate(360deg)}
+  }
+  @keyframes mkRotate{to{transform:rotate(360deg)}}
+  @keyframes mkOrbit{to{transform:rotate(360deg)}}
+  @keyframes mkBreath{0%,100%{transform:scale(.94);opacity:.025}50%{transform:scale(1.04);opacity:.055}}
+
+  @media (prefers-reduced-motion:reduce){
+    .mk-opening::before,.mk-opening::after,.mk-opening__circle2,.mk-opening__arc,
+    .mk-opening__mark,.mk-opening__eyebrow,.mk-opening__name,.mk-opening__role,
+    .mk-opening__progress span{animation:none}
+    .mk-opening__eyebrow,.mk-opening__name,.mk-opening__role{opacity:1;transform:none}
+    .mk-opening__progress span{width:100%}
+    .mk-opening__ring{opacity:1;transform:none}
+  }
+</style>
+
+<div class="mk-opening" id="mkOpening" aria-label="Opening animation">
+  <span class="mk-opening__corner tl">MK / 2030</span>
+  <span class="mk-opening__corner br">CREATIVE STUDIO</span>
+  <div class="mk-opening__inner">
+    <div class="mk-opening__eyebrow">Visual Identity</div>
+    <div class="mk-opening__ring">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <circle class="mk-opening__circle" cx="50" cy="50" r="47"></circle>
+        <circle class="mk-opening__circle2" cx="50" cy="50" r="43"></circle>
+        <circle class="mk-opening__arc" cx="50" cy="50" r="47"></circle>
+      </svg>
+      <div class="mk-opening__mark">MK</div>
+    </div>
+    <div class="mk-opening__name">Mohamed Khaled</div>
+    <div class="mk-opening__role">Graphic Designer &amp; Creative Professional</div>
+    <div class="mk-opening__progress"><span></span></div>
+  </div>
+</div>
+
+<script id="mk-opening-script">
+(function(){
+  var root=document.documentElement, intro=document.getElementById('mkOpening');
+  if(!intro) return;
+  var reduced=false;
+  try{reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){}
+  function closeOpening(){
+    if(!intro||intro.classList.contains('is-hidden')) return;
+    intro.classList.add('is-hidden');
+    root.classList.remove('mk-opening-active');
+    setTimeout(function(){if(intro&&intro.parentNode)intro.remove()},1050);
+  }
+  if(reduced){closeOpening();return}
+  root.classList.add('mk-opening-active');
+  window.addEventListener('load',function(){setTimeout(closeOpening,3000)});
+  setTimeout(closeOpening,5000);
+})();
+</script>
+
+
+
+<header>
+  <!-- ============ OPENING INTRO (mk-intro) ============ -->
+<script>
+(function(){
+  var root=document.documentElement, intro=document.getElementById('mkIntro');
+  if(!intro) return;
+  var done=false, leaving=false;
+  function finish(){
+    if(done) return; done=true;
+    try{
+      root.classList.remove('mk-opening-active','mk-intro-release');
+      if(intro.parentNode) intro.parentNode.removeChild(intro);
+    }catch(e){}
+  }
+  function leave(){
+    if(leaving) return; leaving=true;
+    try{ root.classList.add('mk-intro-release'); intro.classList.add('mk-intro--out'); }
+    catch(e){ finish(); return; }
+    setTimeout(finish,750);
+  }
+  setTimeout(function(){ leave(); finish(); },4500); // hard failsafe: the site always opens
+  var reduce=false;
+  try{ reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
+  if(reduce){ finish(); return; }
+  root.classList.add('mk-opening-active');
+  setTimeout(leave,2000);
+})();
+</script>
+  <div class="wrap navbar">
+    <a href="#home" class="brand">
+      <span class="brand-mark">MK</span>
+      Mohamed&nbsp;Khaled
+    </a>
+    <nav class="links">
+      <a href="#home" data-i18n="nav_home">Home</a>
+      <a href="#about" data-i18n="nav_about">About</a>
+      <a href="#skills" data-i18n="nav_skills">Skills</a>
+      <a href="#services" data-i18n="nav_services">Services</a>
+      <a href="#projects" data-i18n="nav_projects">Projects</a>
+      <a href="#contact" class="nav-cta" data-i18n="nav_contact">Contact Me</a>
+    </nav>
+    <div class="lang-switch" aria-label="Language switcher">
+      <button class="lang-btn active" id="enBtn" type="button">EN</button>
+      <button class="lang-btn" id="arBtn" type="button">عربي</button>
+    </div>
+    <button class="burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-panel" id="mobilePanel">
+  <a href="#home" data-i18n="nav_home">Home</a>
+  <a href="#about" data-i18n="nav_about">About</a>
+  <a href="#skills" data-i18n="nav_skills">Skills</a>
+  <a href="#services" data-i18n="nav_services">Services</a>
+  <a href="#projects" data-i18n="nav_projects">Projects</a>
+  <a href="#contact" data-i18n="nav_contact">Contact Me</a>
+</div>
+
+<main>
+
+  <!-- HERO -->
+  <section id="home" class="hero" style="border-top:none;">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="kicker"><span class="plus"></span data-i18n="kicker"> Portfolio &amp; digital business card</div>
+        <h1 class="display">
+          Mohamed Khaled
+          <span class="role" data-i18n="role">Graphic Designer &amp; Creative Professional</span>
+        </h1>
+        <p class="intro" data-i18n="hero_intro">I'm Mohamed Khaled, a creative professional passionate about graphic design, advertising, branding, and creating digital experiences that make ideas stand out.</p>
+        <div class="cta-row">
+          <a href="#projects" class="btn btn-primary" data-i18n="view_work">View My Work</a>
+          <a href="#contact" class="btn btn-outline">Contact Me</a>
+        </div>
+      <div class="social-row" aria-label="Social media links">
+
+  <!-- Instagram -->
+  <a href="https://www.instagram.com/ruh_1425/"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Instagram"
+     title="Instagram">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <rect x="3" y="3" width="18" height="18" rx="5"/>
+      <circle cx="12" cy="12" r="4"/>
+      <circle cx="17.2" cy="6.8" r="1"/>
+    </svg>
+  </a>
+
+  <!-- Facebook -->
+  <a href="https://www.facebook.com/mhmd.bn.khald.399622/"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Facebook"
+     title="Facebook">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M15 8h-2a2 2 0 0 0-2 2v10M8 13h5"/>
+      <path d="M15 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h9a3 3 0 0 0 3-3V9"/>
+    </svg>
+  </a>
+
+  <!-- LinkedIn -->
+  <a href="https://www.linkedin.com/in/mohamed-khaled-188b50437/"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="LinkedIn"
+     title="LinkedIn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <rect x="3" y="3" width="18" height="18" rx="3"/>
+      <line x1="8" y1="11" x2="8" y2="16"/>
+      <line x1="8" y1="8" x2="8" y2="8"/>
+      <path d="M12 16v-3a2 2 0 0 1 4 0v3"/>
+    </svg>
+  </a>
+
+  
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/201018874547"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="WhatsApp"
+     title="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M4 20l1.3-3.9A8 8 0 1 1 8.7 19L4 20z"/>
+      <path d="M8.5 9.5c.3 2.7 2.3 4.7 5 5"/>
+    </svg>
+  </a>
+
+</div>
+
+
+
+      <div class="portrait-wrap">
+        <div class="portrait-ring"></div>
+        <div class="portrait-ring r2"></div>
+        <div class="portrait"><span><img src="me.jpg" alt=""></span></div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="sec-num" data-i18n="about_num">01 — About</div>
+        <h2 style="margin-top:14px;" data-i18n="about_title">A closer look at my story</h2>
+      </div>
+      <div>
+        <p data-i18n="about_p1">I'm a graphic designer and creative professional with a hands-on background in branding, advertising, and digital design. My work sits at the intersection of clear communication and visual craft — I like taking an idea that's hard to explain and giving it a shape people remember.</p>
+        <p data-i18n="about_p2">Over the past few years I've worked across social media campaigns, brand identities, and web experiences, building a habit of designing with purpose rather than decoration. I care about typography, color systems, and the small details that make a design feel intentional.</p>
+        <p data-i18n="about_p3">Looking ahead, my goal is to grow this practice into a small creative studio — a place where brands can come for design that's considered from the first sketch to the final pixel.</p>
+        <div class="stat-list">
+          <div class="stat"><b>2+</b><span data-i18n="years" data-i18n="years">Years designing</span></div>
+          <div class="stat"><b>40+</b><span data-i18n="projects_delivered" data-i18n="projects_delivered">Projects delivered</span></div>
+          <div class="stat"><b>12</b><span data-i18n="brand_identities" data-i18n="brand_identities">Brand identities</span></div>
+          <div class="stat"><b>1</b><span data-i18n="studio_progress" data-i18n="studio_progress">Studio in progress</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="sec-num" data-i18n="skills_num">02 — Skills</div>
+          <h2 style="margin-top:14px;" data-i18n="skills_title">Tools &amp; disciplines I work with</h2>
+        </div>
+        <p class="sec-desc" data-i18n="skills_desc">A mix of visual design craft and the technical skills to bring it to screen.</p>
+      </div>
+
+      <div class="swatch-cols">
+        <div class="swatch-group">
+          <h3>Design</h3>
+          <div class="swatch" data-level="95">
+            <div class="swatch-top"><span>Graphic Design</span><span>95%</span></div>
+            <div class="swatch-track"><div class="swatch-fill" style="background:var(--red-ink);"></div></div>
+          </div>
+          <div class="swatch" data-level="90">
+            <div class="swatch-top"><span data-i18n="branding">Branding</span><span>90%</span></div>
+            <div class="swatch-track"><div class="swatch-fill" style="background:var(--red-ink);"></div></div>
+          </div>
+          <div class="swatch" data-level="88">
+            <div class="swatch-top"><span data-i18n="social_media_design">Social Media Design</span><span>88%</span></div>
+            <div class="swatch-track"><div class="swatch-fill" style="background:var(--red-ink);"></div></div>
+          </div>
+          <div class="swatch" data-level="85">
+            <div class="swatch-top"><span data-i18n="advertising">Advertising</span><span>85%</span></div>
+            <div class="swatch-track"><div class="swatch-fill" style="background:var(--red-ink);"></div></div>
+          </div>
+          <div class="swatch" data-level="80">
+            <div class="swatch-top"><span data-i18n="ui_design">UI Design</span><span>80%</span></div>
+            <div class="swatch-track"><div class="swatch-fill" style="background:var(--red-ink);"></div></div>
+          </div>
+        </div>
+
+        <div class="swatch-group">
+          <h3 data-i18n="tools_code">Tools &amp; Code</h3>
+          <div class="swatch" data-level="92">
+            <div class="swatch-top"><span data-i18n="photoshop">Adobe Photoshop</span><span>92%</span></div>
+            <div class="swatch-track"><div class="swatch-fill" style="background:var(--teal);"></div></div>
+          </div>
+          <div class="swatch" data-level="90">
+            <div class="swatch-top"><span data-i18n="illustrator">Adobe Illustrator</span><span>90%</span></div>
+            <div class="swatch-track"><div class="swatch-fill" style="background:var(--teal);"></div></div>
+          </div>
+          <div class="swatch" data-level="78">
+            <div class="swatch-top"><span data-i18n="web_design">Web Design</span><span>78%</span></div>
+            <div class="swatch-track"><div class="swatch-fill" style="background:var(--teal);"></div></div>
+          </div>
+          <div class="swatch" data-level="70">
+            <div class="swatch-top"><span data-i18n="html_css">HTML &amp; CSS</span><span>70%</span></div>
+            <div class="swatch-track"><div class="swatch-fill" style="background:var(--teal);"></div></div>
+          </div>
+          <div class="swatch" data-level="60">
+            <div class="swatch-top"><span data-i18n="javascript">JavaScript</span><span>60%</span></div>
+            <div class="swatch-track"><div class="swatch-fill" style="background:var(--teal);"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="sec-num" data-i18n="services_num">03 — Services</div>
+          <h2 style="margin-top:14px;" data-i18n="services_title">What I can help you with</h2>
+        </div>
+        <p class="sec-desc" data-i18n="services_desc">From a single logo to a full campaign — here's where I add the most value.</p>
+      </div>
+
+      <div class="service-list">
+        <div class="service-row">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5L12 3z"/></svg>
+          <h3 data-i18n="svc_graphic_title">Graphic Design</h3>
+          <p class="service-desc" data-i18n="svc_graphic_desc">Print and digital design for campaigns, packaging, and everyday brand materials.</p>
+        </div>
+        <div class="service-row">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg>
+          <h3 data-i18n="svc_social_title">Social Media Advertising</h3>
+          <p class="service-desc" data-i18n="svc_social_desc">Scroll-stopping ad creative and content systems built for each platform.</p>
+        </div>
+        <div class="service-row">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>
+          <h3 data-i18n="svc_brand_title">Branding</h3>
+          <p class="service-desc" data-i18n="svc_brand_desc">Naming, visual identity, and guidelines that keep a brand consistent everywhere.</p>
+        </div>
+        <div class="service-row">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v11H4z"/><path d="M9 20h6M12 16v4"/></svg>
+          <h3 data-i18n="svc_logo_title">Logo Design</h3>
+          <p class="service-desc" data-i18n="svc_logo_desc">Distinctive marks designed to work at any size, in any color, on any surface.</p>
+        </div>
+        <div class="service-row">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l18-7-7 18-3-8-8-3z"/></svg>
+          <h3 data-i18n="svc_ad_title">Advertising Design</h3>
+          <p class="service-desc" data-i18n="svc_ad_desc">Concept-led visuals for campaigns across print, digital, and out-of-home.</p>
+        </div>
+        <div class="service-row">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 4v5"/></svg>
+          <h3 data-i18n="svc_web_title">Web Design</h3>
+          <p class="service-desc" data-i18n="svc_web_desc">Clean, responsive websites that reflect a brand's identity online.</p>
+        </div>
+        <div class="service-row">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19V5a1 1 0 0 1 1-1h9l6 6v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M14 4v6h6"/></svg>
+          <h3 data-i18n="svc_content_title">Creative Content</h3>
+          <p class="service-desc" data-i18n="svc_content_desc">Copy-adjacent visual storytelling for launches, features, and announcements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="sec-num" data-i18n="projects_num">04 — Projects</div>
+          <h2 style="margin-top:14px;" data-i18n="projects_title">Selected work</h2>
+        </div>
+        <p class="sec-desc" data-i18n="projects_desc">A few recent pieces. Replace these with your own project images and details.</p>
+      </div>
+
+      <div class="filters" id="filters">
+        <button class="filter-btn active" data-filter="all" data-i18n="filter_all">All</button>
+        <button class="filter-btn" data-filter="graphic">Graphic Design</button>
+        <button class="filter-btn" data-filter="branding">Branding</button>
+        <button class="filter-btn" data-filter="advertising">Advertising</button>
+        <button class="filter-btn" data-filter="web">Web Design</button>
+      </div>
+
+      <div class="proj-grid" id="projGrid">
+        <!-- populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <div class="sec-num" data-i18n="contact_num">05 — Contact</div>
+        <h2 style="margin-top:14px;" data-i18n="contact_title">Let's Work Together</h2>
+        <p style="color:var(--ink-soft); margin-top:16px; max-width:40ch; line-height:1.6;" data-i18n="contact_desc">Have a project in mind? Send a message or reach out directly — I usually reply within a day.</p>
+        <ul class="contact-list">
+          <li><span class="label" data-i18n="email">Email</span><a class="value" href="mailto:hello@mohamedkhaled.design">mazekamo6@gmail.com</a></li>
+          <li><span class="label">WhatsApp</span><a class="value" href="https://wa.me/+201131020921">+201131020921</a></li>
+          <li><span class="label" data-i18n="behance">Behance</span><a class="value" href="#">behance.net/mohamedkhaled</a></li>
+          <li><span class="label">LinkedIn</span><a class="value" href="#">linkedin.com/in/mohamedkhaled</a></li>
+        </ul>
+      </div>
+<div>
+  <form id="contactForm"
+        action="https://formspree.io/f/moevqyqv"
+        method="POST">
+
+    <div class="field">
+      <label for="cf-name" data-i18n="name_label">Name</label>
+      <input
+        id="cf-name"
+        type="text"
+        name="name"
+        placeholder="Your name" data-i18n-placeholder="name_placeholder"
+        required>
+    </div>
+
+    <div class="field">
+      <label for="cf-email" data-i18n="email_label">Email</label>
+      <input
+        id="cf-email"
+        type="email"
+        name="email"
+        placeholder="you@gmail.com" data-i18n-placeholder="email_placeholder"
+        required>
+    </div>
+
+    <div class="field">
+      <label for="cf-message" data-i18n="message_label">Message</label>
+      <textarea
+        id="cf-message"
+        name="message"
+        rows="5"
+        placeholder="Tell me about your project" data-i18n-placeholder="message_placeholder"
+        required></textarea>
+    </div>
+
+    <input type="hidden" name="_subject" value="New Message From My Portfolio">
+
+    <button type="submit" class="btn btn-primary" data-i18n="send_message">
+      Send Message
+    </button>
+
+    <p class="form-msg" id="formMsg" data-i18n="form_success">
+      Thanks — your message has been sent. I'll get back to you soon.
+    </p>
+
+  </form>
+</div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <h3>Mohamed Khaled</h3>
+        <p data-i18n="footer_tagline">Design. Create. Inspire.</p>
+      </div>
+       <div class="social-row" aria-label="Social media links">
+
+  <!-- Instagram -->
+  <a href="https://www.instagram.com/ruh_1425/"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Instagram"
+     title="Instagram">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <rect x="3" y="3" width="18" height="18" rx="5"/>
+      <circle cx="12" cy="12" r="4"/>
+      <circle cx="17.2" cy="6.8" r="1"/>
+    </svg>
+  </a>
+
+  <!-- Facebook -->
+  <a href="https://www.facebook.com/mhmd.bn.khald.399622/"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Facebook"
+     title="Facebook">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M15 8h-2a2 2 0 0 0-2 2v10M8 13h5"/>
+      <path d="M15 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h9a3 3 0 0 0 3-3V9"/>
+    </svg>
+  </a>
+
+  <!-- LinkedIn -->
+  <a href="https://www.linkedin.com/in/mohamed-khaled-188b50437/"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="LinkedIn"
+     title="LinkedIn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <rect x="3" y="3" width="18" height="18" rx="3"/>
+      <line x1="8" y1="11" x2="8" y2="16"/>
+      <line x1="8" y1="8" x2="8" y2="8"/>
+      <path d="M12 16v-3a2 2 0 0 1 4 0v3"/>
+    </svg>
+  </a>
+
+  
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/201131020921"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="WhatsApp"
+     title="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M4 20l1.3-3.9A8 8 0 1 1 8.7 19L4 20z"/>
+      <path d="M8.5 9.5c.3 2.7 2.3 4.7 5 5"/>
+    </svg>
+  </a>
+
+</div>
+    <div class="foot-bottom">
+      <span id="year"></span>
+      <span data-i18n="footer_bottom">Built with intention, one pixel at a time.</span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+(function(){
+  const translations = {
+    en: {
+      nav_home:"Home", nav_about:"About", nav_skills:"Skills", nav_services:"Services", nav_projects:"Projects", nav_contact:"Contact Me",
+      kicker:"Portfolio & digital business card", role:"Graphic Designer & Creative Professional",
+      hero_intro:"I'm Mohamed Khaled, a creative professional passionate about graphic design, advertising, branding, and creating digital experiences that make ideas stand out.",
+      view_work:"View My Work", contact_me:"Contact Me",
+      about_num:"01 — About", about_title:"A closer look at my story",
+      about_p1:"I'm a graphic designer and creative professional with a hands-on background in branding, advertising, and digital design. My work sits at the intersection of clear communication and visual craft — I like taking an idea that's hard to explain and giving it a shape people remember.",
+      about_p2:"Over the past few years I've worked across social media campaigns, brand identities, and web experiences, building a habit of designing with purpose rather than decoration. I care about typography, color systems, and the small details that make a design feel intentional.",
+      about_p3:"Looking ahead, my goal is to grow this practice into a small creative studio — a place where brands can come for design that's considered from the first sketch to the final pixel.",
+      years:"Years designing", projects_delivered:"Projects delivered", brand_identities:"Brand identities", studio_progress:"Studio in progress",
+      skills_num:"02 — Skills", skills_title:"Tools & disciplines I work with", skills_desc:"A mix of visual design craft and the technical skills to bring it to screen.",
+      design:"Design", graphic_design:"Graphic Design", branding:"Branding", social_media_design:"Social Media Design", advertising:"Advertising", ui_design:"UI Design",
+      tools_code:"Tools & Code", photoshop:"Adobe Photoshop", illustrator:"Adobe Illustrator", web_design:"Web Design", html_css:"HTML & CSS", javascript:"JavaScript",
+      services_num:"03 — Services", services_title:"What I can help you with", services_desc:"From a single logo to a full campaign — here's where I add the most value.",
+      svc_graphic_title:"Graphic Design", svc_graphic_desc:"Print and digital design for campaigns, packaging, and everyday brand materials.",
+      svc_social_title:"Social Media Advertising", svc_social_desc:"Scroll-stopping ad creative and content systems built for each platform.",
+      svc_brand_title:"Branding", svc_brand_desc:"Naming, visual identity, and guidelines that keep a brand consistent everywhere.",
+      svc_logo_title:"Logo Design", svc_logo_desc:"Distinctive marks designed to work at any size, in any color, on any surface.",
+      svc_ad_title:"Advertising Design", svc_ad_desc:"Concept-led visuals for campaigns across print, digital, and out-of-home.",
+      svc_web_title:"Web Design", svc_web_desc:"Clean, responsive websites that reflect a brand's identity online.",
+      svc_content_title:"Creative Content", svc_content_desc:"Copy-adjacent visual storytelling for launches, features, and announcements.",
+      projects_num:"04 — Projects", projects_title:"Selected work", projects_desc:"A few recent pieces. Replace these with your own project images and details.",
+      filter_all:"All", filter_graphic:"Graphic Design", filter_branding:"Branding", filter_advertising:"Advertising", filter_web:"Web Design",
+      contact_num:"05 — Contact", contact_title:"Let's Work Together", contact_desc:"Have a project in mind? Send a message or reach out directly — I usually reply within a day.",
+      email:"Email", whatsapp:"WhatsApp", behance:"Behance", linkedin:"LinkedIn",
+      name_label:"Name", name_placeholder:"Your name", email_label:"Email", email_placeholder:"you@gmail.com", message_label:"Message", message_placeholder:"Tell me about your project",
+      send_message:"Send Message", form_success:"Thanks — your message has been sent. I'll get back to you soon.",
+      footer_tagline:"Design. Create. Inspire.", footer_bottom:"Built with intention, one pixel at a time."
+    },
+    ar: {
+      nav_home:"الرئيسية", nav_about:"نبذة عني", nav_skills:"المهارات", nav_services:"الخدمات", nav_projects:"المشاريع", nav_contact:"تواصل معي",
+      kicker:"ملف أعمال وبطاقة أعمال رقمية", role:"مصمم جرافيك ومحترف إبداعي",
+      hero_intro:"أنا محمد خالد، محترف إبداعي شغوف بالتصميم الجرافيكي والإعلان وبناء الهوية وصناعة التجارب الرقمية التي تجعل الأفكار مميزة.",
+      view_work:"شاهد أعمالي", contact_me:"تواصل معي",
+      about_num:"01 — نبذة عني", about_title:"نظرة أقرب على قصتي",
+      about_p1:"أنا مصمم جرافيك ومحترف إبداعي لدي خبرة عملية في بناء الهويات التجارية والإعلان والتصميم الرقمي. يجمع عملي بين وضوح التواصل وجودة التصميم، وأحب تحويل الأفكار التي يصعب شرحها إلى تصاميم يتذكرها الناس.",
+      about_p2:"خلال السنوات الماضية عملت على حملات التواصل الاجتماعي والهويات التجارية وتجارب الويب، وطورت أسلوبًا يعتمد على التصميم الهادف وليس مجرد الزخرفة. أهتم بالخطوط وأنظمة الألوان والتفاصيل الصغيرة التي تجعل التصميم متناسقًا ومدروسًا.",
+      about_p3:"هدفي في المرحلة القادمة هو تطوير هذا العمل إلى استوديو إبداعي صغير، يأتي إليه أصحاب العلامات التجارية للحصول على تصميم مدروس من أول فكرة وحتى آخر بكسل.",
+      years:"سنوات في التصميم", projects_delivered:"مشروعًا تم إنجازه", brand_identities:"هوية تجارية", studio_progress:"استوديو قيد الإنشاء",
+      skills_num:"02 — المهارات", skills_title:"الأدوات والتخصصات التي أعمل بها", skills_desc:"مزيج من مهارات التصميم البصري والمهارات التقنية لتحويل الأفكار إلى أعمال رقمية.",
+      design:"التصميم", graphic_design:"التصميم الجرافيكي", branding:"الهوية التجارية", social_media_design:"تصميم السوشيال ميديا", advertising:"الإعلان", ui_design:"تصميم واجهات المستخدم",
+      tools_code:"الأدوات والبرمجة", photoshop:"Adobe Photoshop", illustrator:"Adobe Illustrator", web_design:"تصميم المواقع", html_css:"HTML & CSS", javascript:"JavaScript",
+      services_num:"03 — الخدمات", services_title:"كيف يمكنني مساعدتك", services_desc:"من تصميم شعار واحد إلى حملة متكاملة — هذه أبرز الخدمات التي أقدم فيها قيمة حقيقية.",
+      svc_graphic_title:"التصميم الجرافيكي", svc_graphic_desc:"تصميمات للطباعة والوسائط الرقمية للحملات والتغليف ومواد العلامة التجارية اليومية.",
+      svc_social_title:"إعلانات السوشيال ميديا", svc_social_desc:"تصميمات إعلانية جذابة وأنظمة محتوى مناسبة لكل منصة.",
+      svc_brand_title:"بناء الهوية التجارية", svc_brand_desc:"تسمية وهوية بصرية وإرشادات تحافظ على اتساق العلامة التجارية في كل مكان.",
+      svc_logo_title:"تصميم الشعارات", svc_logo_desc:"شعارات مميزة تعمل بكفاءة بأي حجم وبأي لون وعلى أي سطح.",
+      svc_ad_title:"تصميم الإعلانات", svc_ad_desc:"أفكار بصرية للحملات الإعلانية عبر الطباعة والوسائط الرقمية والإعلانات الخارجية.",
+      svc_web_title:"تصميم المواقع", svc_web_desc:"مواقع نظيفة ومتجاوبة تعكس هوية العلامة التجارية على الإنترنت.",
+      svc_content_title:"المحتوى الإبداعي", svc_content_desc:"سرد بصري إبداعي للإطلاقات والميزات والإعلانات.",
+      projects_num:"04 — المشاريع", projects_title:"أعمال مختارة", projects_desc:"مجموعة من الأعمال الحديثة. يمكنك استبدالها بصور وتفاصيل مشاريعك الخاصة.",
+      filter_all:"الكل", filter_graphic:"التصميم الجرافيكي", filter_branding:"الهوية التجارية", filter_advertising:"الإعلان", filter_web:"تصميم المواقع",
+      contact_num:"05 — تواصل", contact_title:"لنعمل معًا", contact_desc:"لديك مشروع في ذهنك؟ أرسل رسالة أو تواصل معي مباشرة — عادةً أرد خلال يوم واحد.",
+      email:"البريد الإلكتروني", whatsapp:"واتساب", behance:"Behance", linkedin:"LinkedIn",
+      name_label:"الاسم", name_placeholder:"اكتب اسمك", email_label:"البريد الإلكتروني", email_placeholder:"you@gmail.com", message_label:"الرسالة", message_placeholder:"اكتب تفاصيل مشروعك",
+      send_message:"إرسال الرسالة", form_success:"شكرًا — تم إرسال رسالتك. سأعود إليك قريبًا.",
+      footer_tagline:"صمّم. ابتكر. ألهم.", footer_bottom:"صُنع بعناية، بكسلًا بعد بكسل."
+    }
+  };
+
+  function setLanguage(lang){
+    const t = translations[lang];
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if(t[key] !== undefined) el.textContent = t[key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+      const key = el.getAttribute('data-i18n-placeholder');
+      if(t[key] !== undefined) el.placeholder = t[key];
+    });
+    document.getElementById('enBtn').classList.toggle('active', lang === 'en');
+    document.getElementById('arBtn').classList.toggle('active', lang === 'ar');
+    localStorage.setItem('portfolioLang', lang);
+  }
+
+  document.getElementById('enBtn').addEventListener('click', ()=>setLanguage('en'));
+  document.getElementById('arBtn').addEventListener('click', ()=>setLanguage('ar'));
+  setLanguage(localStorage.getItem('portfolioLang') || 'en');
+})();
+</script>
+
+<script>
+(function(){
+  // Year
+  document.getElementById('year').textContent = '© ' + new Date().getFullYear() + ' Mohamed Khaled. All rights reserved.';
+
+  // Mobile nav
+  var burger = document.getElementById('burgerBtn');
+  var panel = document.getElementById('mobilePanel');
+  burger.addEventListener('click', function(){
+    var open = panel.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  panel.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ panel.classList.remove('open'); burger.setAttribute('aria-expanded','false'); });
+  });
+
+  // Skill bar fill on view
+  try{
+    var swatches = document.querySelectorAll('.swatch');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var fill = e.target.querySelector('.swatch-fill');
+          fill.style.width = e.target.getAttribute('data-level') + '%';
+          io.unobserve(e.target);
+        }
+      });
+    }, {threshold:0.4});
+    swatches.forEach(function(s){ io.observe(s); });
+  }catch(err){ console.error(err); }
+
+  // Projects data + filter
+  var projects = [
+    {name:'Solstice Coffee Rebrand', cat:'branding', tag:'Branding', desc:'Full identity system for a specialty coffee roastery.', c1:'#B8291B', c2:'#5A1712'},
+    {name:'Nova Fashion Campaign', cat:'advertising', tag:'Advertising', desc:'Key visuals and ad set for a seasonal fashion launch.', c1:'#1E7F86', c2:'#123F42'},
+    {name:'Studio Line Poster Set', cat:'graphic', tag:'Graphic Design', desc:'Editorial poster series exploring grid and type.', c1:'#E7AE2F', c2:'#7A5A11'},
+    {name:'Marea Hotel Website', cat:'web', tag:'Web Design', desc:'Responsive site design for a boutique coastal hotel.', c1:'#16161B', c2:'#3A3A42'},
+    {name:'Arc Fitness Identity', cat:'branding', tag:'Branding', desc:'Logo and visual language for a boutique gym.', c1:'#B8291B', c2:'#3A3A42'},
+    {name:'Pulse App Social Ads', cat:'advertising', tag:'Advertising', desc:'Performance ad creative for a music streaming app.', c1:'#1E7F86', c2:'#16161B'}
+  ];
+
+  var grid = document.getElementById('projGrid');
+  function render(filter){
+    grid.innerHTML = '';
+    projects.filter(function(p){ return filter === 'all' || p.cat === filter; }).forEach(function(p){
+      var card = document.createElement('div');
+      card.className = 'proj-card';
+      card.innerHTML =
+        '<div class="proj-thumb" style="background:linear-gradient(135deg,'+p.c1+','+p.c2+');">' +
+          '<span class="proj-tag">'+p.tag+'</span>' +
+        '</div>' +
+        '<div class="proj-overlay">' +
+          '<h3>'+p.name+'</h3>' +
+          '<p>'+p.desc+'</p>' +
+          '<a href="#" class="btn btn-primary">View Project</a>' +
+        '</div>';
+      grid.appendChild(card);
+    });
+  }
+  render('all');
+
+  document.getElementById('filters').addEventListener('click', function(e){
+    var btn = e.target.closest('.filter-btn');
+    if(!btn) return;
+    document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    render(btn.getAttribute('data-filter'));
+  });
+
+  // Contact form (front-end only)
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('formMsg').classList.add('show');
+    this.reset();
+  });
+})();
+</script>
+
+</body>
+</html>
